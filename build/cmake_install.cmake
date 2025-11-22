@@ -1,8 +1,8 @@
-# Install script for directory: /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example
+# Install script for directory: /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/msm/Desktop/Embedded-linux-images/vsomeip/install_folder")
+  set(CMAKE_INSTALL_PREFIX "/home/msm/Desktop/Embedded-linux-images/install_folder")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

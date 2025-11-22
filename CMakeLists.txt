@@ -10,8 +10,8 @@ include_directories (
     ${VSOMEIP_INCLUDE_DIRS}
 )
 
-add_executable(msm-service ../src/msm-service.cpp)
+add_executable(msm-service ./src/msm-service.cpp)
 target_link_libraries(msm-service vsomeip3 ${Boost_LIBRARIES})
 
-add_executable(msm-client ../src/msm-client.cpp)
+add_executable(msm-client ./src/msm-client.cpp)
 target_link_libraries(msm-client vsomeip3 ${Boost_LIBRARIES})

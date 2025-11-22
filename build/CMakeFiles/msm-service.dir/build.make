@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example
+CMAKE_SOURCE_DIR = /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build
+CMAKE_BINARY_DIR = /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/msm-service.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/msm-service.dir/progress.make
 include CMakeFiles/msm-service.dir/flags.make
 
 CMakeFiles/msm-service.dir/src/msm-service.cpp.o: CMakeFiles/msm-service.dir/flags.make
-CMakeFiles/msm-service.dir/src/msm-service.cpp.o: /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/src/msm-service.cpp
+CMakeFiles/msm-service.dir/src/msm-service.cpp.o: /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/src/msm-service.cpp
 CMakeFiles/msm-service.dir/src/msm-service.cpp.o: CMakeFiles/msm-service.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/msm-service.dir/src/msm-service.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/msm-service.dir/src/msm-service.cpp.o -MF CMakeFiles/msm-service.dir/src/msm-service.cpp.o.d -o CMakeFiles/msm-service.dir/src/msm-service.cpp.o -c /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/src/msm-service.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/msm-service.dir/src/msm-service.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/msm-service.dir/src/msm-service.cpp.o -MF CMakeFiles/msm-service.dir/src/msm-service.cpp.o.d -o CMakeFiles/msm-service.dir/src/msm-service.cpp.o -c /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/src/msm-service.cpp
 
 CMakeFiles/msm-service.dir/src/msm-service.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/msm-service.dir/src/msm-service.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/src/msm-service.cpp > CMakeFiles/msm-service.dir/src/msm-service.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/src/msm-service.cpp > CMakeFiles/msm-service.dir/src/msm-service.cpp.i
 
 CMakeFiles/msm-service.dir/src/msm-service.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/msm-service.dir/src/msm-service.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/src/msm-service.cpp -o CMakeFiles/msm-service.dir/src/msm-service.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/src/msm-service.cpp -o CMakeFiles/msm-service.dir/src/msm-service.cpp.s
 
 # Object files for target msm-service
 msm__service_OBJECTS = \
@@ -92,7 +92,7 @@ msm__service_EXTERNAL_OBJECTS =
 
 msm-service: CMakeFiles/msm-service.dir/src/msm-service.cpp.o
 msm-service: CMakeFiles/msm-service.dir/build.make
-msm-service: /home/msm/Desktop/Embedded-linux-images/vsomeip/install_folder/lib/libvsomeip3.so.3.5.11
+msm-service: /usr/local/lib/libvsomeip3.so.3.5.11
 msm-service: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0
 msm-service: /usr/lib/x86_64-linux-gnu/libboost_log.so.1.83.0
 msm-service: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.83.0
@@ -101,7 +101,7 @@ msm-service: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.83.0
 msm-service: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.83.0
 msm-service: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.83.0
 msm-service: CMakeFiles/msm-service.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable msm-service"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable msm-service"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/msm-service.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -113,6 +113,6 @@ CMakeFiles/msm-service.dir/clean:
 .PHONY : CMakeFiles/msm-service.dir/clean
 
 CMakeFiles/msm-service.dir/depend:
-	cd /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build /home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles/msm-service.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build /home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles/msm-service.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/msm-service.dir/depend
 

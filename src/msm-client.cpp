@@ -1,19 +1,20 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+
 #include <condition_variable>
 #include <thread>
-// ---------------------------------------------------------------------------------------------------
+
 #include <vsomeip/vsomeip.hpp>
-// ---------------------------------------------------------------------------------------------------
+
 #define SAMPLE_SERVICE_ID 0x1234
 #define SAMPLE_INSTANCE_ID 0x5678
 #define SAMPLE_METHOD_ID 0x0421
-// ---------------------------------------------------------------------------------------------------
+
 std::shared_ptr<vsomeip::application> app;
 std::mutex mutex;
 std::condition_variable condition;
-// ---------------------------------------------------------------------------------------------------
+
 void run() {
     std::unique_lock<std::mutex> its_lock(mutex);
     condition.wait(its_lock);
@@ -27,73 +28,74 @@ void run() {
     std::shared_ptr<vsomeip::payload> its_payload = vsomeip::runtime::get()->create_payload();
     std::vector<vsomeip::byte_t> its_payload_data;
 
-    // std::cout << "Client send: ";
-    for (vsomeip::byte_t i = 0; i < 10; i++) {
-        its_payload_data.push_back(i % 256);
-        // std::cout << its_payload_data.back() << " ";
-    }
-    // std::cout << std::endl;
+    // -----------------------------------------------------------------------------
+    // /////////////////// changed by me
+    //   for (vsomeip::byte_t i=0; i<10; i++) {
+    //     its_payload_data.push_back(i % 256);
+    //   }
+    its_payload_data.push_back('H');
+    its_payload_data.push_back('i');
+    its_payload_data.push_back(' ');
+    its_payload_data.push_back('S');
+    its_payload_data.push_back('e');
+    its_payload_data.push_back('r');
+    its_payload_data.push_back('v');
+    its_payload_data.push_back('i');
+    its_payload_data.push_back('c');
+    its_payload_data.push_back('e');
+    // -----------------------------------------------------------------------------
 
     its_payload->set_data(its_payload_data);
     request->set_payload(its_payload);
     app->send(request);
 }
-// ---------------------------------------------------------------------------------------------------
+
 void on_message(const std::shared_ptr<vsomeip::message>& _response) {
 
-    std::shared_ptr<vsomeip::payload> its_payload = _response->get_payload();
-    vsomeip::length_t l = its_payload->get_length();
+    
+    // -----------------------------------------------------------------------
+    // std::shared_ptr<vsomeip::payload> its_payload = _response->get_payload();
+    // vsomeip::length_t l = its_payload->get_length();
 
     // Get payload
-    std::stringstream ss;
-    for (vsomeip::length_t i = 0; i < l; i++) {
-        ss << std::setw(2) << std::setfill('0') << std::hex << (int)*(its_payload->get_data() + i) << " ";
-    }
+    //   std::stringstream ss;
+    //   for (vsomeip::length_t i=0; i<l; i++) {
+    //      ss << std::setw(2) << std::setfill('0') << std::hex
+    //         << (int)*(its_payload->get_data()+i) << " ";
+    //   }
 
-    std::cout << "CLIENT: Received message with Client/Session [" << std::setw(4) << std::setfill('0') << std::hex
-              << _response->get_client() << "/" << std::setw(4) << std::setfill('0') << std::hex << _response->get_session() << "] "
-              << ss.str() << std::endl;
+    //   std::cout << "CLIENT: Received message with Client/Session ["
+    //       << std::setw(4) << std::setfill('0') << std::hex << _response->get_client() << "/"
+    //       << std::setw(4) << std::setfill('0') << std::hex << _response->get_session() << "] "
+    //       << ss.str() << std::endl;
+
+    std::shared_ptr<vsomeip::payload> its_payload = _response->get_payload();
+
+    vsomeip::byte_t* data_ptr = its_payload->get_data();
+    vsomeip::length_t len = its_payload->get_length();
+
+    // تحويل bytes → string
+    std::string txt(reinterpret_cast<char*>(data_ptr), len);
+
+    std::cout << "CLIENT: Received message with Client/Session: \033[32m" << txt << "\033[0m" << std::endl;
+    // ---------------------------------------------------------------------------
 }
-// ---------------------------------------------------------------------------------------------------
+
 void on_availability(vsomeip::service_t _service, vsomeip::instance_t _instance, bool _is_available) {
-    std::cout << "CLIENT: Service ["
-            << std::setw(4) << std::setfill('0') << std::hex << _service << "." << _instance
-            << "] is "
-            << (_is_available ? "available." : "NOT available.")
-            << std::endl;
-    condition.notify_all();
+    std::cout << "CLIENT: Service [" << std::setw(4) << std::setfill('0') << std::hex << _service << "." << _instance << "] is "
+              << (_is_available ? "available." : "NOT available.") << std::endl;
+    if (_is_available) {
+        condition.notify_one();
+    }
 }
-// ---------------------------------------------------------------------------------------------------
+
 int main() {
 
-    app = vsomeip::runtime::get()->create_application("MSM");
-
-    /*********** app->init() ************
-     * he init method must be called first after creating a vsomeip application and executes the following steps to initialize it:
-     * Loading the configuration
-     * Determining routing configuration and initialization of the routing
-     * Installing signal handlers
-     */
+    app = vsomeip::runtime::get()->create_application("Hello");
     app->init();
-
-    /*********** app->register_availability_handler() ************
-     * whether the registration was successful.
-     * As client you have to tell vsomeip that you want to use the service and you need to
-       register a callback in order to get a call when the service is available.
-     */
     app->register_availability_handler(SAMPLE_SERVICE_ID, SAMPLE_INSTANCE_ID, on_availability);
-
     app->request_service(SAMPLE_SERVICE_ID, SAMPLE_INSTANCE_ID);
-
     app->register_message_handler(SAMPLE_SERVICE_ID, SAMPLE_INSTANCE_ID, SAMPLE_METHOD_ID, on_message);
-
     std::thread sender(run);
-
-    /*********** app->start() ************
-     * The start method has to be called after init in order to start the message processing
-     */
     app->start();
-
-    return 0;
 }
-// ---------------------------------------------------------------------------------------------------

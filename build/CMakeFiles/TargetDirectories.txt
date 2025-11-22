@@ -1,4 +1,4 @@
-/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles/msm-service.dir
-/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles/msm-client.dir
-/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles/edit_cache.dir
-/home/msm/Desktop/Embedded-linux-images/vsomeip/msm_example/build/CMakeFiles/rebuild_cache.dir
+/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles/msm-service.dir
+/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles/msm-client.dir
+/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles/edit_cache.dir
+/home/msm/Desktop/Embedded-linux-images/vsomeip/msm-examples/build/CMakeFiles/rebuild_cache.dir
